@@ -1,0 +1,23 @@
+{
+  "name": "changesets",
+  "version": "0.0.0",
+  "description": "JS changesets",
+  "main": "changesets.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sciworth/changesets.git"
+  },
+  "author": "Grammarly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sciworth/changesets/issues"
+  },
+  "homepage": "https://github.com/sciworth/changesets",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "textdiff": "git+ssh://git@github.com/sciworth/textdiff.git"
+  }
+}
