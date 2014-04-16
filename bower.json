@@ -14,5 +14,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "textdiff": "git+ssh://git@github.com/sciworth/textdiff.git#0.0.1"
+  }
 }
