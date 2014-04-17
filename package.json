@@ -1,6 +1,6 @@
 {
   "name": "changesets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS changesets",
   "main": "changesets.js",
   "scripts": {
@@ -18,6 +18,5 @@
     "url": "https://github.com/sciworth/changesets/issues"
   },
   "homepage": "https://github.com/sciworth/changesets",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
