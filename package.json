@@ -1,6 +1,6 @@
 {
   "name": "changesets",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JS changesets",
   "main": "changesets.js",
   "scripts": {
