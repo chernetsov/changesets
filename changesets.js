@@ -1,4 +1,4 @@
-Changesets = {
+Changesets = { 
 
   op: function(op) {
     op = _.clone(op)
