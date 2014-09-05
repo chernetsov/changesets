@@ -1,4 +1,4 @@
-Changesets = { 
+Changesets = {
 
   op: function(op) {
     op = _.clone(op)
@@ -14,14 +14,26 @@ Changesets = {
       return op
     }
 
-    op.apply = function(text) {
+    op.apply = function(text, selection) {
       if (this.type == '+') {
         if (text.length != this.tlen) throw new Error('Text length doesn\'t match expected length. It\'s most likely you have missed a transformation: expected:' + this.tlen + ', actual:' + text.length)
+
+        if(selection) {
+          if(this.pos < selection.b) selection.b += this.text.length
+          if(this.pos < selection.e) selection.e += this.text.length
+        }
+
         return text.slice(0, this.pos) + this.text + text.slice(this.pos)
       }
       else if (this.type == '-') {
         if (text.length != this.tlen) throw new Error('Text length doesn\'t match expected length. It\'s most likely you have missed a transformation: expected:' + this.tlen + ', actual:' + text.length)
         if (text.substr(this.pos, this.len) != this.text) throw new Error('Applying delete operation: Passed context doesn\'t match assumed context: ' + JSON.stringify(op) + ', actual context: "' + text.substr(this.pos, this.len) + '"')
+
+        if(selection) {
+          if(this.pos < selection.b) selection.b -= Math.min(this.text.length, selection.b - this.pos)
+          if(this.pos < selection.e) selection.e -= Math.min(this.text.length, selection.e - this.pos)
+        }
+
         return text.slice(0, this.pos) + text.slice(this.pos + this.len)
       }
       else if (this.type == '=') {
@@ -168,7 +180,7 @@ Changesets = {
           })
         }
       }
-      
+
       return this
     }
 
@@ -196,9 +208,9 @@ Changesets = {
       }
     }
 
-    cs.apply = function(text) {
+    cs.apply = function(text, selection) {
       this.sequencify().forEach(function(op) {
-        text = op.apply(text)
+        text = op.apply(text, selection)
       })
       return text
     }
